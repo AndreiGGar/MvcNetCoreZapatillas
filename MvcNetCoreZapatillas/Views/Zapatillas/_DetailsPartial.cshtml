@@ -1,0 +1,17 @@
+﻿@model Zapatilla
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#contenido").load("/Zapatillas/_Pagination");
+        })
+    </script>
+}
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-dark"><b>Nombre: @Model.Nombre</b></li>
+    <li class="list-group-item">@Model.Descripcion</li>
+    <li class="list-group-item">Precio: @Model.Precio</li>
+</ul>
+
+<div id="contenido" style="background-color: lightcoral"></div>

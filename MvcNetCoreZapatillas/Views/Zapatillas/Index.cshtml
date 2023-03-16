@@ -1,0 +1,20 @@
+﻿@model List<Zapatilla>
+
+<h4>Zapatillas</h4>
+
+@if (Model != null)
+{
+    @foreach (Zapatilla zapa in Model)
+    {
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a asp-controller="Zapatillas" asp-action="Details" asp-route-idproducto="@zapa.IdProducto" class="btn btn-danger">
+                    PRUEBAS @zapa.Nombre
+                </a>
+                <a asp-controller="Zapatillas" asp-action="_DetailsPartial" asp-route-idproducto="@zapa.IdProducto" class="btn btn-success">
+                    CORRECTO @zapa.Nombre
+                </a>
+            </li>
+        </ul>
+    }
+}

@@ -1,0 +1,19 @@
+﻿@model Zapatilla
+
+<h4>
+    Detalles
+</h4>
+
+<a asp-controller="Zapatillas" asp-action="Index">
+    Volver a Index
+</a>
+|
+<a asp-controller="Zapatillas" asp-action="ImagenesZapatilla" asp-route-idproducto="@Model.IdProducto" asp-route-posicion=1>
+    Imágenes de zapatilla
+</a>
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-dark"><b>Nombre: @Model.Nombre</b></li>
+    <li class="list-group-item">@Model.Descripcion</li>
+    <li class="list-group-item">Precio: @Model.Precio</li>
+</ul>
