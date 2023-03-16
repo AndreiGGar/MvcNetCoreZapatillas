@@ -1,38 +1,38 @@
 ﻿@model List<ImagenZapatilla>
 
-    @{
+@{
     int numeropagina = 1;
     int numeroregistros = (int)ViewData["REGISTROS"];
-    }
+}
 
-    <div class="card">
-        <div class="card-body">
-            <div class="card-text">
-                Imagen @numeropagina de @numeroregistros
-            </div>
-            <ul class="list-group list-group-horizontal">
-                <li class="list-group-item">
-                    <a asp-controller="Zapatillas" asp-action="ImagenesZapatilla" asp-route-posicion="1" asp-route-idproducto="@ViewData["IDPRODUCTO"]">
-                        Primero
-                    </a>
-                    <a asp-controller="Zapatillas" asp-action="ImagenesZapatilla" asp-route-posicion="@ViewData["ANTERIOR"]" asp-route-idproducto="@ViewData["IDPRODUCTO"]">
-                        Anterior
-                    </a>
-                    <a asp-controller="Zapatillas" asp-action="ImagenesZapatilla" asp-route-posicion="@ViewData["SIGUIENTE"]" asp-route-idproducto="@ViewData["IDPRODUCTO"]">
-                        Siguiente
-                    </a>
-                    <a asp-controller="Zapatillas" asp-action="ImagenesZapatilla" asp-route-posicion="@ViewData["ULTIMO"]" asp-route-idproducto="@ViewData["IDPRODUCTO"]">
-                        Ultimo
-                    </a>
-                </li>
-                @for (int i = 1; i <= numeroregistros; i += 1)
+<div class="card">
+    <div class="card-body">
+        <div class="card-text">
+            Imagen @numeropagina de @numeroregistros
+        </div>
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item">
+                <a asp-controller="Zapatillas" asp-action="_DetailsPartial" asp-route-posicion="1" asp-route-idproducto="@ViewData["IDPRODUCTO"]">
+                    Primero
+                </a>
+                <a asp-controller="Zapatillas" asp-action="_DetailsPartial" asp-route-posicion="@ViewData["ANTERIOR"]" asp-route-idproducto="@ViewData["IDPRODUCTO"]">
+                    Anterior
+                </a>
+                <a asp-controller="Zapatillas" asp-action="_DetailsPartial" asp-route-posicion="@ViewData["SIGUIENTE"]" asp-route-idproducto="@ViewData["IDPRODUCTO"]">
+                    Siguiente
+                </a>
+                <a asp-controller="Zapatillas" asp-action="_DetailsPartial" asp-route-posicion="@ViewData["ULTIMO"]" asp-route-idproducto="@ViewData["IDPRODUCTO"]">
+                    Ultimo
+                </a>
+            </li>
+            @for (int i = 1; i <= numeroregistros; i += 1)
             {
                 numeropagina += 1;
             }
-            </ul>
-        </div>
-        @foreach (ImagenZapatilla imagen in Model)
+        </ul>
+    </div>
+    @foreach (ImagenZapatilla imagen in Model)
     {
         <img src="@imagen.Imagen" class="img card-img img-fluid" />
     }
-    </div>
+</div>

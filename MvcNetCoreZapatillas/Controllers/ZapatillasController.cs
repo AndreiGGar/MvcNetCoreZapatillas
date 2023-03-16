@@ -59,21 +59,24 @@ namespace MvcNetCoreZapatillas.Controllers
             return View(zapatilla);
         }
 
-        public async Task<IActionResult> _Pagination(int idproducto)
+        public async Task<IActionResult> _Pagination(int idproducto, int? posicion)
         {
-            int posicion = 1;
+            if (posicion == null)
+            {
+                posicion = 1;
+            }
             int numregistros = this.repo.GetNumeroRegistrosZapatillas(idproducto);
-            int siguiente = posicion + 1;
+            int siguiente = posicion.Value + 1;
             if (siguiente > numregistros)
             {
                 siguiente = numregistros;
             }
-            int anterior = posicion - 1;
+            int anterior = posicion.Value - 1;
             if (anterior < 1)
             {
                 anterior = 1;
             }
-            List<ImagenZapatilla> imagenes = await this.repo.GetImagenesAsync(idproducto, posicion);
+            List<ImagenZapatilla> imagenes = await this.repo.GetImagenesAsync(idproducto, posicion.Value);
             ViewData["ULTIMO"] = numregistros;
             ViewData["SIGUIENTE"] = siguiente;
             ViewData["ANTERIOR"] = anterior;
